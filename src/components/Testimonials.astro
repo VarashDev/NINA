@@ -1,0 +1,102 @@
+---
+const testimonials = [
+  {
+    name: "Emily Carter",
+    role: "Music Producer",
+    text: "This service completely changed how I approach sound design. Absolutely amazing!",
+    image: "https://i.pravatar.cc/100?img=1",
+  },
+  {
+    name: "Michael Lee",
+    role: "DJ & Composer",
+    text: "The quality is top-notch and the interface is super intuitive. Highly recommend!",
+    image: "https://i.pravatar.cc/100?img=2",
+  },
+  {
+    name: "Sofia Martinez",
+    role: "Sound Engineer",
+    text: "I’ve used many tools before, but this one just feels right. Smooth, powerful, and inspiring.",
+    image: "https://i.pravatar.cc/100?img=3",
+  },
+];
+---
+
+<section class="w-full max-w-3xl mx-auto px-6 py-12">
+  <!-- <h2 class="text-2xl font-bold text-center mb-8 text-gray-900 dark:text-gray-100">What Our Users Say</h2> -->
+
+  <!-- Slider container -->
+  <div id="testimonial-slider" class="overflow-hidden relative">
+    <div class="flex transition-transform duration-700 ease-in-out" style="transform: translateX(0);">
+      {testimonials.map((item, i) => (
+        <div class="min-w-full flex flex-col items-center text-center px-4" key={i}>
+          <img src={item.image} alt={item.name} class="w-20 h-20 rounded-full mb-4 shadow-md" />
+          <p class="text-lg italic text-gray-700 dark:text-gray-300 max-w-md">{item.text}</p>
+          <h3 class="mt-4 font-semibold text-gray-900 dark:text-white">{item.name}</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">{item.role}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Navigation buttons -->
+  <div class="flex justify-center mt-6 space-x-3">
+    <button id="prev" class="p-2 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600">
+      ←
+    </button>
+    <button id="next" class="p-2 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600">
+      →
+    </button>
+  </div>
+
+  <!-- Pagination dots -->
+  <div class="flex justify-center mt-4 space-x-2" id="dots">
+    {testimonials.map((_, i) => (
+      <span class={`dot w-3 h-3 rounded-full transition-all duration-300 ${i === 0 ? 'bg-gray-800 dark:bg-white scale-110' : 'bg-gray-400 dark:bg-gray-600'}`} data-index={i}></span>
+    ))}
+  </div>
+
+  <script>
+    const slider = document.querySelector('#testimonial-slider > div');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const dots = document.querySelectorAll('#dots .dot');
+    const count = slider.children.length;
+    let index = 0;
+
+    function updateSlider() {
+      slider.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.add('bg-gray-800', 'dark:bg-white', 'scale-110');
+          dot.classList.remove('bg-gray-400', 'dark:bg-gray-600');
+        } else {
+          dot.classList.remove('bg-gray-800', 'dark:bg-white', 'scale-110');
+          dot.classList.add('bg-gray-400', 'dark:bg-gray-600');
+        }
+      });
+    }
+
+    prev.onclick = () => {
+      index = (index - 1 + count) % count;
+      updateSlider();
+    };
+
+    next.onclick = () => {
+      index = (index + 1) % count;
+      updateSlider();
+    };
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        index = Number(dot.dataset.index);
+        updateSlider();
+      });
+    });
+
+    // Auto slide every 6s
+    setInterval(() => {
+      index = (index + 1) % count;
+      updateSlider();
+    }, 6000);
+  </script>
+</section>

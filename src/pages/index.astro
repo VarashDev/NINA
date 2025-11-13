@@ -1,8 +1,21 @@
 ---
+// https://maestra.com.ua
+// https://a-telier.com.ua
 import '../styles/global.css'
+import { Image } from "astro:assets";
+import HeroImage from "../assets/poshiv.png";
+import HeroImage2 from "../assets/hero.jpg";
+import Image1 from "../assets/1.png";
+import Image2 from "../assets/2.png";
+import Image3 from "../assets/3.png";
+import StarIcon from '../icons/star.svg';
+import PriceIcon from '../icons/price.svg';
+import MaterialsIcon from '../icons/materials.svg';
+import TimeIcon from '../icons/time.svg';
+import Testimonials from "../components/Testimonials.astro";
 ---
 
-<html lang="en">
+<html lang="uk">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -10,7 +23,142 @@ import '../styles/global.css'
 		<meta name="generator" content={Astro.generator} />
 		<title>Nina</title>
 	</head>
-	<body>
-		<h1 class="text-4xl text-teal-900 font-bold my-5">Nina</h1>
+	<body class="bg-white">
+		<header></header>
+		<main>
+<!-- hero -->
+<section>
+	<div class="px-24 py-4 max-w-7xl mx-auto w-full max-sm:px-5">
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
+		<div class="text-center">
+			<h1 class="text-4xl text-rose-600 font-black m-5">Пошив одягу в м. Вараш</h1>
+			<p class="text-lg">Пошиття одягу на замовлення.</p>
+			<p class="text-lg">Ремонт одягу любої складності.</p>
+			<p class="text-lg">Пошив домашнього текстилю.</p>
+		</div>
+		<div>
+		<Image
+        src={HeroImage2}
+        alt="Пошив одягу"
+      />
+		</div>
+	</div>
+	</div>
+</section>
+
+<!-- 3 columns -->
+<section class="bg-rose-100">
+	<div class="px-24 py-4 max-w-7xl mx-auto w-full max-sm:px-5">
+	<div class="text-center">
+		<h2 class="text-3xl text-rose-600 font-bold m-5">ПОСЛУГИ</h2>
+	</div>
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-6">
+		<div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
+			<Image src={Image1} alt="Пошив одягу" />
+			<div class="p-4">
+				<h3 class="text-lg font-semibold mb-2">Пошив одягу</h3>
+				<p class="text-gray-600 text-sm">
+					Я займаюсь пошивом жіночого, дитячого та чоловічого одягу. Допомагаю у підборі тканини для пошиву та гарантую ідеальну посадку по фігурі.
+				</p>
+      		</div>
+		</div>
+		<div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
+			<Image src={Image2} alt="Ремонт одягу" />
+			<div class="p-4">
+				<h3 class="text-lg font-semibold mb-2">Ремонт одягу</h3>
+				<p class="text-gray-600 text-sm">
+					Ремонтую одяг будь-якої складності, усуваю пориви, подряпини, потертості. Відновлюю витончені петлі, виконую штопку та багато іншого.
+				</p>
+      		</div>
+		</div>
+		<div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
+			<Image src={Image3} alt="Пошив домашнього текстилю" />
+			<div class="p-4">
+				<h3 class="text-lg font-semibold mb-2">Пошив домашнього текстилю</h3>
+				<p class="text-gray-600 text-sm">
+					Можна замовити пошив тюлей, штор, постільної білизни та іншого за потрібними параметрами.
+				</p>
+      		</div>
+		</div>
+	</div>
+	</div>
+</section>
+<!-- perevagi -->
+ <section class="bg-white">
+	<div class="px-24 py-4 max-w-7xl mx-auto w-full max-sm:px-5 text-center">
+		<h2 class="text-3xl text-rose-600 font-bold m-5">ПЕРЕВАГИ</h2>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-6">
+			<div>
+				<div class="icon-wrapper">
+					<StarIcon class="icon" />
+				</div>
+				<div class="p-4">
+					<h3 class="text-lg font-semibold mb-2">Якість</h3>
+					<p class="text-gray-600 text-sm">
+						Бездоганна якість на всі види послуг
+					</p>
+				</div>
+			</div>
+			<div>
+				<div class="icon-wrapper">
+					<PriceIcon class="icon" />
+				</div>
+				<div class="p-4">
+					<h3 class="text-lg font-semibold mb-2">Ціни</h3>
+					<p class="text-gray-600 text-sm">
+						Найдоступніші ціни за бездоганну якість
+					</p>
+				</div>
+			</div>
+			<div>
+				<div class="icon-wrapper">
+					<MaterialsIcon class="icon" />
+				</div>
+				<div class="p-4">
+					<h3 class="text-lg font-semibold mb-2">Матеріали</h3>
+					<p class="text-gray-600 text-sm">
+						Більше 10 000 найменуваннь (тканини, фурнітура)
+					</p>
+				</div>
+			</div>
+			<div>
+				<div class="icon-wrapper">
+					<TimeIcon class="icon" />
+				</div>
+				<div class="p-4">
+					<h3 class="text-lg font-semibold mb-2">Строки</h3>
+					<p class="text-gray-600 text-sm">
+						Два види строків на всі послуги: стандартний і експрес
+					</p>
+				</div>
+			</div>
+	</div>
+	</div>
+ </section>
+<!-- testimonials -->
+ <section class="bg-gray-200">
+	<div class="px-24 py-4 max-w-7xl mx-auto w-full max-sm:px-5">
+		<h2 class="text-3xl text-rose-600 font-bold m-5 text-center">ВІДГУКИ</h2>
+		<Testimonials />
+	</div>
+ </section>
+
+
+
+		</main>
 	</body>
 </html>
+
+<style>
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  fill: #000000; /* changes color if your SVG uses currentColor */
+}
+</style>
